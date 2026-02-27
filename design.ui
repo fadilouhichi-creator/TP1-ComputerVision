@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>850</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>VisionArt - TP1 Computer Vision</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayoutTop">
+      <item>
+       <widget class="QPushButton" name="btn_browse">
+        <property name="text">
+         <string>Charger une image...</string>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Informations :</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbl_dimensions">
+        <property name="text">
+         <string>Aucune image chargée.</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      
+      <!-- Tab 1: Image Originale & Canaux -->
+      <widget class="QWidget" name="tab_original">
+       <attribute name="title">
+        <string>Image Originale &amp; Canaux RVB</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout1">
+        
+        <!-- Original Image -->
+        <item row="0" column="0" colspan="3">
+         <widget class="QGroupBox" name="groupBox_orig">
+          <property name="title"><string>Image Originale</string></property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <widget class="QLabel" name="OriginalImg">
+             <property name="text"><string>Image Originale</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="scaledContents"><bool>true</bool></property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+
+        <!-- Red Channel -->
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="groupBox_red">
+          <property name="title"><string>Canal Rouge</string></property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QPushButton" name="DisplayRedChan">
+             <property name="text"><string>Extraire / Afficher</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="RedChannel">
+             <property name="text"><string>Rouge</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="scaledContents"><bool>true</bool></property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        
+        <!-- Green Channel -->
+        <item row="1" column="1">
+         <widget class="QGroupBox" name="groupBox_green">
+          <property name="title"><string>Canal Vert</string></property>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <widget class="QPushButton" name="DisplayGreenChan">
+             <property name="text"><string>Extraire / Afficher</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="GreenChannel">
+             <property name="text"><string>Vert</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="scaledContents"><bool>true</bool></property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        
+        <!-- Blue Channel -->
+        <item row="1" column="2">
+         <widget class="QGroupBox" name="groupBox_blue">
+          <property name="title"><string>Canal Bleu</string></property>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QPushButton" name="DisplayBlueChan">
+             <property name="text"><string>Extraire / Afficher</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="BlueChannel">
+             <property name="text"><string>Bleu</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="scaledContents"><bool>true</bool></property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+
+       </layout>
+      </widget>
+
+      <!-- Tab 2: Histogramme Couleur -->
+      <widget class="QWidget" name="tab_color_hist">
+       <attribute name="title">
+        <string>Analyse Spectrale (Histogramme)</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <widget class="QPushButton" name="DisplayColorHist">
+          <property name="text"><string>Générer Histogramme des Couleurs</string></property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="ColorHist">
+          <property name="text"><string>Histogramme Couleur</string></property>
+          <property name="alignment"><set>Qt::AlignCenter</set></property>
+          <property name="scaledContents"><bool>true</bool></property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- Tab 3: Traitement Niveaux de Gris -->
+      <widget class="QWidget" name="tab_grayscale">
+       <attribute name="title">
+        <string>Luminance &amp; Contraste</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0" colspan="2">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_contrast">
+            <property name="text"><string>Contraste (Multiplicateur &gt; 1 augmente, &lt; 1 diminue):</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="Contrast">
+            <property name="text"><string>1.2</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_brightness">
+            <property name="text"><string>Brillance (-255 à 255):</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="Brightness">
+            <property name="text"><string>10</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="DisplayGrayImg">
+            <property name="text"><string>Appliquer et Convertir en Gris</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        
+        <!-- Gray Image Layout -->
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="groupBox_gray">
+          <property name="title"><string>Résultat Niveaux de Gris</string></property>
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <item>
+            <widget class="QLabel" name="GrayImg">
+             <property name="text"><string>Image Niveaux de Gris</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="scaledContents"><bool>true</bool></property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+
+        <!-- Gray Histogram Layout -->
+        <item row="1" column="1">
+         <widget class="QGroupBox" name="groupBox_hist_gray">
+          <property name="title"><string>Histogramme (Gris)</string></property>
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <widget class="QPushButton" name="DisplayGrayHist">
+             <property name="text"><string>Calculer Distribution Niveaux de Gris</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="GrayHist">
+             <property name="text"><string>Histogramme</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="scaledContents"><bool>true</bool></property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- Tab 4: Labo Créatif -->
+      <widget class="QWidget" name="tab_creative">
+       <attribute name="title">
+        <string>Labo Créatif (Filtres Extras)</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_creative">
+        
+        <!-- Buttons Side -->
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox_creative_controls">
+          <property name="title"><string>Effets Artistiques</string></property>
+          <property name="maximumWidth"><number>250</number></property>
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <item>
+            <widget class="QPushButton" name="btn_edge">
+             <property name="text"><string>Détection de Contours (Neon Effect)</string></property>
+             <property name="minimumHeight"><number>50</number></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_blur">
+             <property name="text"><string>Flou Artistique (Gaussian)</string></property>
+             <property name="minimumHeight"><number>50</number></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_negative">
+             <property name="text"><string>Inverser les Couleurs (Négatif)</string></property>
+             <property name="minimumHeight"><number>50</number></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_sepia">
+             <property name="text"><string>Style Rétro (Filtre Sépia)</string></property>
+             <property name="minimumHeight"><number>50</number></property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation"><enum>Qt::Vertical</enum></property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+
+        <!-- Display Side -->
+        <item row="0" column="1">
+         <widget class="QGroupBox" name="groupBox_creative_display">
+          <property name="title"><string>Aperçu du Filtre</string></property>
+          <layout class="QVBoxLayout" name="verticalLayout_10">
+           <item>
+            <widget class="QLabel" name="CreativeImg">
+             <property name="text"><string>Veuillez choisir un effet à gauche.</string></property>
+             <property name="alignment"><set>Qt::AlignCenter</set></property>
+             <property name="scaledContents"><bool>true</bool></property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+
+       </layout>
+      </widget>
+
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
